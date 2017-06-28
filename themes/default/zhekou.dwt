@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="themes/default/images/currency.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/images/css.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="logins">
+	<div class="zk_top"></div>
+    <div class="zk_mi">
+    	<div class="zk_1">
+        	<div class="zk1_left">
+            	<div class="zk_db"><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=4&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></div>
+                <div class="zk_wz">
+                	 <!--{foreach name=artciles_list1 from=$artciles_list1 item=goods}-->
+                     <!-- {if $smarty.foreach.artciles_list1.iteration==1}-->
+                	<div class="zka_t"><a href="{$goods.url}" class="a3" target="_blank">{$goods.short_title}</a>
+					{$goods.description}[<a href="{$goods.url}" class="a4" target="_blank">详细</a>]</div>
+                    <ul>
+                    <!-- {/if} -->
+                    <!-- {if $smarty.foreach.artciles_list1.iteration>1}-->
+                    	<li><a href="{$goods.url}" target="_blank">{$goods.short_title}</a></li>
+                    <!-- {/if} -->
+                    <!--{/foreach}-->
+                    </ul>
+                </div>
+            </div>
+            <div class="zk1_right">
+            	<li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=5&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+                <li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=6&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+                <li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=7&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+                <li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=8&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+                <li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=9&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+                <li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=10&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+                <li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=11&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+                <li><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=12&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></li>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="zk_2">
+        	<!--{foreach name=artciles_list2 from=$artciles_list2 item=goods}-->
+        	<div class="zk_lis">
+            	<div class="zk_img"><a href="{$goods.url}" target="_blank"><img src="{$goods.file_url}" width="120" height="120" /></a></div>
+                <div class="zk_sm">
+                	<div class="zks_top">
+                    	<a href="{$goods.url}" target="_blank">{$goods.short_title}</a>
+                     </div>
+                    <div class="zs_b">{$goods.description}<a href="{$goods.url}" target="_blank">详情>></a></div>
+                </div>
+            </div>
+             <!--{/foreach}-->
+        </div>
+    </div>
+    <div class="login_bom"></div>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

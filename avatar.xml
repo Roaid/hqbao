@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<userinfo>
+<st>1</st>
+<sex>1</sex>
+<em>1</em>
+<avatar_male>0101000001000100000000000001000000</avatar_male>
+<avatar_female>0001000001000100000000000001000000</avatar_female>
+<bg>10</bg>
+<fashion><![CDATA[<fashion style="0" sex="0" bg ="1" >												 <item x="0" y="0" scalex="1" scaley="1" res="hairback_0.swf"/>												 <item x="0" y="0" scalex="1" scaley="1" res="pants_0.swf"/>												 <item x="0" y="0" scalex="1" scaley="1" res="coat_0.swf"/>												 <item x="0" y="0" scalex="1" scaley="1" res="face_0.swf"/>												 <item x="0" y="0" scalex="1" scaley="1" res="hair_0.swf"/>												 </fashion>]]></fashion>
+<cartoon>1</cartoon>
+</userinfo>

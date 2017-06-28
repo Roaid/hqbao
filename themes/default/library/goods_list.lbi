@@ -1,0 +1,14 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{foreach name=goods_list from=$goods_list item=goods}-->
+<!--{if $goods}-->
+<li> <a href="{$goods.url}" target="_blank"><img src="{$goods.goods_thumb}" width="212" height="200" /></a> <a href="{$goods.url}" target="_blank">
+  <!-- {if $goods.goods_style_name} -->
+  {$goods.goods_style_name}
+  <!-- {else} -->
+  {$goods.goods_name}
+  <!-- {/if} -->
+  </a>
+  <div class="ji">价钱：<font>{$goods.shop_price}</font></div>
+  <a href="javascript:addToCart({$goods.goods_id})" style=" width:140px"><img src="images/daifou.jpg" style="border:none;"/></a></li>
+<!--{/if}-->
+<!--{/foreach}-->

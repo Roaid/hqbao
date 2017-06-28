@@ -1,0 +1,30 @@
+body{margin:0;padding:0;font-size:12px;font-family:"宋体","Arial"; background:#F3FBFF url(body_solid.jpg) repeat-x;}
+body,div,span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,table,td,tr,th,p{padding:0; margin:0;}
+li,dd,ol,ul{list-style-type:none;}
+img{border:none;}
+.fl{float:left;}
+.fr{float:right;}
+a{color:#3F3F3F; text-decoration:none;}
+a:hover{color:#F25D00; text-decoration:underline;}
+/****top****/
+.top{width:950px; height:22px; padding-top:11px; margin:0 auto; color:#515050;}
+.top .login{text-align:left; padding-left:10px; float:left;}
+.top .zhanhu{text-align:left; padding-right:35px; padding-left:16px; float:right; color:#C0C0C0; background:url(bag.jpg) no-repeat left 1px;}
+.top .zhanhu a{padding-left:8px; padding-right:8px;}
+.search{width:950px; height:94px; margin:0 auto; background:url(sou.jpg) no-repeat 0px 0px;}
+.menu{width:950px; height:38px; margin:0 auto;}
+.menu .menu_left{width:3px; height:38px; background:url(menu_left.jpg) no-repeat; float:left;}
+.menu ul{width:943px; height:38px; line-height:38px; background:url(menu_bg.jpg); float:left;}
+.menu ul li{float:left; font-size:14px; width:104px; text-align:center; background:url(menu_solid.jpg) no-repeat top right;}
+.menu ul li a{color:#fff; font-weight:bold;}
+.menu ul li a:hover{color:#fff;}
+.menu .menu_right{width:4px; height:38px; background:url(menu_right.jpg) no-repeat; float:left;}
+/********尾部*******/
+.bottom{background:url(bottom.jpg); height:304px; margin-top:11px;}
+.bottom .zhifu{width:950px; height:180px; margin:0 auto;}
+.bottom .zhifu ol{float:left; width:158px; padding-left:32px; height:180px; background:url(zhifu1.jpg) no-repeat top right;}
+.bottom .zhifu ol span{font-weight:bold; font-size:14px; color:#25A0CD; margin-top:18px; display:block;}
+.bottom .zhifu ol li{margin-top:15px; background:url(zhifu2.jpg) no-repeat left center; padding-left:12px;}
+.bottom .bom_menu{width:950px; height:38px; margin:0 auto; text-align:center; line-height:38px; font-size:14px; color:#DFDFDF;}
+.bottom .bom_menu a{padding-left:14px; padding-right:14px;}
+.bottom .copy{width:950px; height:85px; margin:0 auto; text-align:center; line-height:85px; color:#3F3F3F;}

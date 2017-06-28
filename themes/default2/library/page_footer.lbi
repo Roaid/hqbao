@@ -1,0 +1,38 @@
+﻿<div style="clear:both;"></div>
+<div class="bottom">
+ <!--{if $helps}-->
+	<div class="zhifu">
+
+<!-- {foreach from=$helps item=help_cat} -->
+<ol>
+  <span><a href='{$help_cat.cat_id}' title="{$help_cat.cat_name}">{$help_cat.cat_name}</a></span>
+  <!-- {foreach from=$help_cat.article item=item} -->
+  <li><a href="{$item.url}" title="{$item.title|escape:html}">{$item.short_title}</a></li>
+  <!-- {/foreach} -->
+</ol>
+<!-- {/foreach} -->
+
+    </div>
+<!--{/if}-->    
+    <div class="bom_menu">
+     <!-- {if $navigator_list.bottom} -->
+   <!-- {foreach name=nav_bottom_list from=$navigator_list.bottom item=nav} -->
+        <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a>
+        <!-- {if !$smarty.foreach.nav_bottom_list.last} -->
+           |
+        <!-- {/if} -->
+      <!-- {/foreach} -->
+  <!-- {/if} -->
+    </div>
+    <div class="copy">
+    	客服{$service_phone}  E-mail: {$service_email}  <!-- ICP 证书{if $icp_number} -->
+  {$lang.icp_number}:<a href="http://www.miibeian.gov.cn/" target="_blank">{$icp_number}</a>
+  <!-- 结束ICP 证书{/if} -->
+  {insert name='query_info'}
+    </div>
+</div>
+<script type="text/javascript">
+  //<![CDATA[
+  var process_request = "{$lang.process_request}";
+  //]]>
+  </script> 

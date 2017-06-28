@@ -1,0 +1,14 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="tif1"><span>精品推荐</span></div>
+	<div class="tif2">
+    <!--{foreach name=best_goods from=$best_goods item=goods}-->
+          <div class="tif_li">
+                    <div class="ti_le"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="90" height="90" border="0" /></a></div>
+                  <div class="ti_ri">
+                    <font><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name}</a></font>
+                    价格：<strong>{$goods.shop_price}</strong>
+                  </div>
+                </div> 
+    <!--{/foreach}-->	            
+    </div>
+<div class="tif3"></div>

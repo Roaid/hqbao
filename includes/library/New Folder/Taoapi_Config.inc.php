@@ -1,0 +1,60 @@
+﻿<?php
+/*
+警告: 修改该文件必须保存为无ROM头的文件,也就是去掉文件头签名
+如果使用记事本改的话可能会出现获取数据乱码的问题
+*/
+
+//设置获取数据的编码. 支持UTF-8 GBK GB2312 
+//需要 iconv或mb_convert_encoding 函数支持
+//UTF-8 不可写成UTF8
+$apiConfig['Charset'] = 'UTF-8';
+
+//设置数据环境
+//true 测试环境 false 正式环境
+$apiConfig['TestMode'] = false;
+
+//您的appKey和appSecret 支持多个appKey
+$apiConfig['AppKey'] = array(
+'12046080'=>'273c908afbe9c599f21fd970fe551a53'
+);
+
+//当appKey不只一个时,API次数超限后自动启用下一个APPKEY
+//false:关闭 true:开启
+$apiConfig['AppKeyAuto'] = false;
+
+//设置API版本,1 表示1.0 2表示2.0
+$apiConfig['Version'] = 1;
+
+//设置sign加密方式,支持 md5 和 hmac 
+//版本2.0时才可以使用 hmac
+$apiConfig['SignMode'] = 'md5';
+
+//显示或关闭错语提示,
+//true:关闭 false:开启
+$apiConfig['CloseError'] = true;
+
+//开启或关闭API调用日志功能,开启后可以查看到每天APPKEY调用的次数以及调用的API
+//false:关闭 true:开启
+$apiConfig['ApiLog'] = false;
+
+//开启或关闭错误日志功能
+//false:关闭 true:开启
+$apiConfig['Errorlog'] = false;
+
+//设置API读取失败时重试的次数,可以提高API的稳定性,默认为3次
+$apiConfig['RestNumberic'] = 3;
+
+//设置数据缓存的时间,单位:小时;0表示不缓存
+$apiConfig['Cache'] = 0;
+
+//设置缓存保存的目录
+$apiConfig['CachePath'] = dirname(__FILE__).'/Apicache';
+
+//自动清除过期缓存的机率,数字越大机率越高,0 表示关闭该功能
+$apiConfig['ClearCache'] = 100;
+
+//每次调用API后自动清除原有传入参数
+//false:关闭 true:开启
+$apiConfig['AutoRestParam'] = true;
+
+return $apiConfig;

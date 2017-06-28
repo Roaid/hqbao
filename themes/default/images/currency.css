@@ -1,0 +1,63 @@
+body{margin:0;padding:0;font-size:12px;font-family:"宋体","Arial"; background:#DDEEF6 url(top_bj.jpg) repeat-x; color:#3F3F3F;}
+body,div,span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,table,td,tr,th,p{padding:0; margin:0;}
+li,dd,ol,ul{list-style-type:none;}
+img{border:none;}
+a{text-decoration:none; color:#797E82;}
+a:hover{text-decoration:underline; color:#0166B4;}
+h1{font-weight:bold; font-size:12px;}
+h6{font-size:12px; display:inline; color:#FF6600;}
+h5{font-size:14px; display:inline; color:#FF6600; font-weight:100;}
+.nohover{width:62px; height:26px; line-height:18px; padding-top:8px; padding-left:8px; background:url(nj.jpg) no-repeat;}
+.hover{width:62px; height:26px; padding-top:8px; line-height:18px;  padding-left:8px; background:url(njove.jpg) no-repeat;}
+.me .qq ul li img{float:left;}
+.me .qq ul li span{padding-left:4px;}
+.noh{width:108px; height:24px; padding-top:7px; background:url(xuanz.jpg) no-repeat; color:#679BC3; font-weight:bold; text-align:center; overflow:hidden;}
+.ho{width:108px; height:24px; padding-top:7px; background:url(xuan.jpg) no-repeat; color:#fff; font-weight:bold; text-align:center; overflow:hidden;}
+.fl{float:left;}
+.fr{float:right;}
+.san{background:url(x4.jpg) no-repeat; color:#fff; font-weight:bold;}
+.sano{color:#0066B5;}
+.top{width:710px; height:60px; margin:0 auto; background:url(logo.jpg) no-repeat; padding:37px 0 0 248px;}
+.top .youke{color:#fff; float:left; line-height:32px; height:32px;}
+.top .youke a{font-weight:bold; color:#fff; padding-left:2px; padding-right:2px;}
+.top ul{float:right; width:288px; padding-left:32px; height:32px; line-height:32px; background:url(shop.jpg) no-repeat; color:#C3DAEC;}
+.top ul a{color:#0067B6; padding-left:8px; padding-right:8px;}
+.me{width:958px; height:89px; margin:0 auto;}
+
+.me .menu{width:530px; height:89px; float:left;}
+.me .menu ul{width:530px; height:46px;}
+.me .menu ul li{float:left; width:100px; height:46px; text-align:center;}
+.me .menu ul li a{width:100px; height:28px; padding-top:18px; display:block; font-size:14px; font-weight:bold; color:#fff;}
+.me .menu ul li a:hover{background:url(menu_bj.jpg) no-repeat; color:#2077BE; text-decoration:none;}
+
+.me .qq{width:425px; height:100px; float:right; background:url(qq_bj.jpg) no-repeat 0 11px;}
+.me .qq ul{width:355px; height:25px; padding-left:65px; padding-top:11px;}
+.me .qq ul li{float:left; cursor:pointer; display:inline;}
+.me .menu .danqin{height:52px; line-height:52px; padding-left:12px;}
+.me .menu .danqin a{color:#0065B4;}
+
+
+
+.me .qq .dib{width:425px; height:55px; background:url(qq_bo.jpg) no-repeat;}
+.me .qq .dib .le{width:46px; height:45px; padding:2px 0 0 18px;*padding:10px 0 0 18px;_padding:10px 0 0 18px; float:left;}
+.me .qq .dib .ri{width:345px; height:45px; padding-top:2px;*padding-top:10px;_padding-top:10px; float:left; overflow:hidden}
+.me .qq .dib .ri span{display:block; margin-top:4px; color:#929292;}
+
+.me .qq .dib .tst{width:216px; height:30px; line-height:32px; color:#525252; font-weight:bold; border-top:1px solid #9A9A9A; border-left:1px solid #AAAAAA; border-bottom:1px solid #DFDFDF; border-right:1px solid #D6D6D6; background:url(bdbj.jpg) no-repeat; margin-top:2px; font-size:16px;}
+.me .qq .dib .sub{width:68px; height:35px; background:url(sub.jpg) no-repeat; cursor:pointer; border:none; margin-left:6px; margin-top:10px;}
+
+
+/********尾部*******/
+
+.fanhui{width:936px; height:16px; padding-right:22px; margin:0 auto; margin-top:65px; text-align:right;}
+.fanhui a{color:#0164B5; font-size:14px;}
+
+.dmenu{height:170px; background:#012233; margin-top:12px;}
+.dmenu .men_cont{width:960px; height:170px; margin:0 auto;}
+.dmenu .men_cont ul{width:192px; height:145px; padding-top:25px; float:left; background:url(solia.jpg) no-repeat top right;}
+.dmenu .men_cont ul span{font-weight:bold; color:#CBD2D8; padding-left:34px;}
+.dmenu .men_cont ul li{padding-left:48px; margin-top:12px;}
+.dmenu .men_cont ul li a{color:#CBD2D8;}
+
+.bottom{height:95px; padding-top:18px; background:url(bottom_bj.jpg) repeat-x; text-align:center; line-height:40px;}
+.bottom a{padding-left:14px; padding-right:14px;}

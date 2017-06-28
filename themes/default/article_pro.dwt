@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="themes/default/images/currency.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/images/css.css" rel="stylesheet" type="text/css" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="motif">
+  <div class="mo_left" style="float:right;">
+    <div class="zui zkx">
+      <div class="tif1">精品推荐</div>
+      <div class="splb">
+        <ul>
+          <!--{foreach name=best_goods from=$best_goods item=goods}-->
+          <li> <a href="{$goods.url}"><img src="{$goods.thumb}" width="95" height="72" /></a> <a href="{$goods.url}">百合花 欧美风大牌娃娃荷叶花边领不</a><br />
+            价格：<font>{$goods.shop_price}</font><br />
+            来源：<font><a href={$goods.detail_url}"" target="_blank">{$goods.tb_nick}</a></font> </li>
+         <!--{/foreach}-->
+        </ul>
+      </div>
+      <div class="tif3"></div>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="dai zkxy">
+      <div class="tif1">代购排行榜</div>
+      <div class="tif2">
+        <ul>
+          <li><a href="#">代购排行榜代购排行榜代购排行榜</a></li>
+          <li><a href="#">代购排行榜代购排行榜代购排行榜</a></li>
+          <li><a href="#">代购排行榜代购排行榜代购排行榜</a></li>
+          <li><a href="#">代购排行榜代购排行榜代购排行榜</a></li>
+          <li><a href="#">代购排行榜代购排行榜代购排行榜</a></li>
+          <li><a href="#">代购排行榜代购排行榜代购排行榜</a></li>
+        </ul>
+      </div>
+      <div class="tif3"></div>
+    </div>
+  </div>
+  <div class="mo_right" style="float:left;">
+    <div class="mo1">
+      <div class="tizk"> <b>{$article.title|escape:html}</b></div>
+    </div>
+    <div class="mo2 mo13">
+      <div class="mos2 mos12">
+        <!-- {if $article.content } -->
+        {$article.content}
+        <!-- {/if} --></div>
+    </div>
+    <div class="mo3"></div>
+  </div>
+</div>
+
+
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="themes/default/images/currency.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/images/css.css" rel="stylesheet" type="text/css" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+
+{* 包含脚本文件 *}{insert_scripts files='utils.js,common.js,global.js,compare.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="motif">
+	<div class="mo_left">
+    	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+        <div style="clear:both;"></div>
+        <!-- #BeginLibraryItem "/library/recommend_best_c.lbi" --><!-- #EndLibraryItem -->
+    </div>
+	<div class="mo_right">
+    	<div class="bzs">
+        	 <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
+       	  <input name="keywords" type="text" id="keyword" value="{$search_keywords|escape}" class="tst"/>
+            <select name="category" id="category" style="font-size:14px;">
+      <option value="0">{$lang.all_category}</option>
+      {$category_list}
+    </select>
+          <input name="" type="submit" value="" class="sub"/>
+        </form>
+        </div>
+        <div class="mo3" style="margin-bottom:10px;"></div>
+    	<div class="bzs">
+        	 <span><img src="images/b1.jpg" /></span>
+             <div style="float:right">
+             <form action="search.php" method="post" class="sort" name="listform" id="form">
+            <select name="sort">
+              {html_options options=$lang.sort selected=$pager.search.sort}
+            </select>
+            <select name="order">
+              {html_options options=$lang.order selected=$pager.search.order}
+            </select>
+            <input type="image" name="imageField" src="../images/bnt_go.gif" alt="go"/>
+            <input type="hidden" name="page" value="{$pager.page}" />
+            <input type="hidden" name="display" value="{$pager.display}" id="display" />
+            <!--{foreach from=$pager.search key=key item=item}-->
+            {if $key neq "sort" and $key neq "order"}{if $key eq 'keywords'}
+            <input type="hidden" name="{$key}" value="{$item|escape:decode_url}" />
+            {else}
+            <input type="hidden" name="{$key}" value="{$item}" />
+            {/if}{/if}
+            <!--{/foreach}-->
+          </form>
+             </div>
+        </div>
+        <div class="mo2">
+        	
+            <div class="likuan">
+         		<!--{foreach name=goods_list from=$goods_list item=goods}-->
+                <!--{if $goods}-->
+                <li> <a href="{$goods.url}" target="_blank"><img src="{$goods.goods_thumb}" width="212" height="200" /></a> <a href="{$goods.url}" target="_blank">
+                  <!-- {if $goods.goods_style_name} -->
+                  {$goods.goods_style_name}
+                  <!-- {else} -->
+                  {$goods.goods_name}
+                  <!-- {/if} -->
+                  </a>
+                  <div class="ji">价钱：<font>{$goods.shop_price}</font></div>
+                  <a href="javascript:addToCart({$goods.goods_id})" style=" width:140px"><img src="images/daifou.jpg" style="border:none;"/></a></li>
+                <!--{/if}-->
+                <!--{/foreach}-->
+            </div>
+            <div style="clear:both;"></div>
+             <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+        </div>
+        <div class="mo3"></div>
+    </div>
+</div>
+
+
+
+<div class="blank"></div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

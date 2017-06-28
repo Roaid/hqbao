@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="themes/default/images/currency.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/images/css.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<script language="javascript">
+function setTab3(name,cursel,n)
+{
+  for(i=1;i<=n;i++){
+   var menu=document.getElementById(name+i);
+   var con=document.getElementById("con_"+name+"_"+i);
+   menu.className=i==cursel?"san":"sano";
+   con.style.display=i==cursel?"block":"none";   
+  }
+}
+</script>
+{* 包含脚本文件 *}{insert_scripts files='common.js'}
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="motif">
+	<div class="mo_left">
+    	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+        <div style="clear:both;"></div>
+        <div class="zui">
+    		<div class="tif1">折扣信息</div>
+        	<div class="tbtj">
+            	<!--{foreach name=artciles_list1 from=$artciles_list1 item=goods}-->
+            	<div class="zkx">
+                	<a href="{$goods.url}" target="_blank" class="a1">{$goods.short_title}</a>
+					{$goods.description}
+                    <a href="{$goods.url}" target="_blank" class="a2">详情>></a>
+                </div>
+                <!--{/foreach}-->
+                <div class="tj_db"><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=15&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></div>
+        	</div>
+        	<div class="tif3"></div>
+        </div>
+    </div>
+	<div class="mo_right">
+    	<div class="bzs">
+        	 <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
+       	  <input name="keywords" type="text" id="keyword" value="{$search_keywords|escape}" class="tst"/>
+            <select name="category" id="category" style="font-size:14px;">
+      <option value="0">{$lang.all_category}</option>
+      {$category_list}
+    </select>
+          <input name="" type="submit" value="" class="sub"/>
+        </form>
+        </div>
+        <div class="mo3" style="margin-bottom:10px;"></div>
+    	<div class="bzs">
+        	 <span><img src="images/b2.jpg" /></span>
+        </div>
+        <div class="mo2">
+        	<div class="rem">
+            	<div class="re_left"><script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=13&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script></div>
+                <div class="re_right">
+                	<ul>
+                    	<span>热卖信息</span>
+                        <!-- {foreach name=hot_goods from=$hot_goods item=goods}-->
+                         <!-- {if $smarty.foreach.hot_goods.iteration<6}-->
+                        <li><a href="{$goods.url}" target="_blank">{$goods.short_name_h}</a></li>
+                        <!-- {/if} -->
+                        <!--{/foreach}-->
+                    </ul>
+                    <script src=" http://www.hqbao.com/affiche.php?act=js&type=0&ad_id=14&from=%E6%9C%AC%E7%AB%99&charset=UTF8"></script>
+                </div>
+        	</div>
+        	<div class="tb_tui">
+             <!--{foreach name=best_goods from=$best_goods item=goods}-->
+             <!-- {if $smarty.foreach.hot_goods.iteration<2}-->
+                <li>
+                	<div class="l_zuo"><a href="{$goods.url}" target="_blank"><img src="{$goods.thumb}" width="90" height="90" /></a></div>
+                    <div class="l_you">
+                    	<a href="{$goods.url}" target="_blank">{$goods.short_name_b}</a><br />
+						价格：<font>{$goods.shop_price}</font><br />
+						<a href="javascript:addToCart({$goods.goods_id})"><img src="images/daifou.jpg"/></a>
+                   </div>
+                </li>
+                <!-- {/if} -->
+             <!--{/foreach}--> 
+            </div>
+            <div class="tjqh">
+            <!--{foreach name=cat_top10s from=$cat_top10s item=cat_top10s}-->
+            	<!-- {if $smarty.foreach.cat_top10s.iteration==1}-->
+            	<li id="san{$smarty.foreach.cat_top10s.iteration}" onmouseover="setTab3('san',{$smarty.foreach.cat_top10s.iteration},10)" class="san">{$cat_top10s.cat_name}</li>
+                <!-- {else}-->
+                <li id="san{$smarty.foreach.cat_top10s.iteration}" onmouseover="setTab3('san',{$smarty.foreach.cat_top10s.iteration},10)" class="sano">{$cat_top10s.cat_name}</li>
+                <!-- {/if} -->
+            <!-- {/foreach} -->
+            </div>
+            <!--{foreach name=cat_top10sg from=$cat_top10sg item=cat_top10sg}-->
+            <div class="bxiao" id="con_san_{$smarty.foreach.cat_top10sg.iteration}" <!-- {if $smarty.foreach.cat_top10sg.iteration==1}--><!-- {else}--> style="display:none"<!-- {/if} -->>
+            	<!--{foreach from=$cat_top10sg.goods item=cat_top10sgg}-->
+         		<li>
+                	<div class="l_zuo"><a href="goods.php?id={$cat_top10sgg.goods_id}" target="_blank"><img src="{$cat_top10sgg.thumb}" width="90" height="90" /></a></div>
+                    <div class="l_you">
+                    	<a href="goods.php?id={$cat_top10sgg.goods_id}" target="_blank">{$cat_top10sgg.short_name}</a><br />
+						价格：<font>{$cat_top10sgg.price}</font><br />
+						<a href="javascript:addToCart({$cat_top10sgg.goods_id})"><img src="images/daifou.jpg"/></a>
+                   </div>
+                </li>
+                <!-- {/foreach} -->
+            </div>
+            <!-- {/foreach} -->         
+        </div>
+        <div class="mo3"></div>
+    </div>  
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

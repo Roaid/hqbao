@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="themes/default/images/currency.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/images/css.css" rel="stylesheet" type="text/css" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}{insert_scripts files='common.js'}
+<script type="text/javascript">function $id(element) {return document.getElementById(element);}//切屏--是按钮，_v是内容平台，_h是内容库function reg(str){var bt=$id(str+"_b").getElementsByTagName("h2");for(var i=0;i<bt.length;i++){bt[i].subj=str;bt[i].pai=i;bt[i].style.cursor="pointer";bt[i].onclick=function(){$id(this.subj+"_v").innerHTML=$id(this.subj+"_h").getElementsByTagName("blockquote")[this.pai].innerHTML;for(var j=0;j<$id(this.subj+"_b").getElementsByTagName("h2").length;j++){var _bt=$id(this.subj+"_b").getElementsByTagName("h2")[j];var ison=j==this.pai;_bt.className=(ison?"":"h2bg");}}}$id(str+"_h").className="none";$id(str+"_v").innerHTML=$id(str+"_h").getElementsByTagName("blockquote")[0].innerHTML;}</script>
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="blank"></div>
+<div class="motif">
+	<div class="mo_left">
+    	<!-- #BeginLibraryItem "/library/category_tree.lbi" --><!-- #EndLibraryItem -->
+        <div style="clear:both;"></div>
+        
+    </div>
+    
+        <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+        <div class="mo_right">
+    	<div class="mo1">
+        	<div class="til">{$goods.goods_style_name}</div>
+            <div style="clear:both;"></div>
+            <div class="ti2">
+            	<div class="ti_zb"><img src="{$goods.goods_img}" alt="{$goods.goods_name|escape:html}" width="304" height="280" /></div>
+                <div class="ti_rb">
+                	<div class="h1">环球报推荐指数：<img src="images/stars{$goods.comment_rank}.gif" alt="comment rank {$goods.comment_rank}" /></div>
+                    <div class="h2">{$goods.shop_price_formated}</div>
+                    <ul>
+                    	<li>代购件数：：<input name="number" type="text" id="number" value="1" size="4" onblur="changePrice()" style="border:1px solid #ccc; "/>件</li>
+                        <li>浏览次数：<b>{$goods.click_count}</b>次</li>
+                        <li>来源商家：<font><a href="{$goods.detail_url}" target="_blank">{$goods.tb_nick}</a></font></li>
+                    </ul>
+                    <div class="h3">{$goods.seller_note}</div>
+                    <div class="h4"><a href="javascript:addToCart({$goods.goods_id})"><img src="images/anniu.jpg" /></a></div>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="mo2">
+        	<div class="mos1">
+            	<span>推荐理由</span>
+                {$goods.goods_brief}
+            </div>
+            <div class="mos2">
+            <div class="spms">商品描述</div> {$goods.goods_desc}</div>
+        </div>
+        <div class="mo3"></div>
+    </div>
+        </form>
+</div>
+<div class="blank5"></div>
+<!--友情链接 start-->
+<!--{if $img_links  or $txt_links }-->
+<div id="bottomNav" class="box">
+  <div class="box_1">
+    <div class="links clearfix">
+      <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+      <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
+      <!--结束图片类型的友情链接{/foreach}-->
+      <!-- {if $txt_links} -->
+      <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+      [<a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>]
+      <!--结束文字类型的友情链接{/foreach}-->
+      <!-- {/if} -->
+    </div>
+  </div>
+</div>
+<!--{/if}-->
+<!--友情链接 end-->
+<div class="blank"></div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+<script type="text/javascript">var goods_id = {$goods_id};var goodsattr_style = {$cfg.goodsattr_style|default:1};var gmt_end_time = {$promote_end_time|default:0};{foreach from=$lang.goods_js item=item key=key}var {$key} = "{$item}";{/foreach}var goodsId = {$goods_id};var now_time = {$now_time};<!-- {literal} -->onload = function(){changePrice();fixpng();try { onload_leftTime(); }catch (e) {}}/*** 点选可选属性或改变数量时修改商品价格的函数*/function changePrice(){var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);var qty = document.forms['ECS_FORMBUY'].elements['number'].value;Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');}/*** 接收返回的信息*/function changePriceResponse(res){if (res.err_msg.length > 0){alert(res.err_msg);}else{document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;if (document.getElementById('ECS_GOODS_AMOUNT'))document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;}
+}
+<!-- {/literal} -->
+</script>
+</html>

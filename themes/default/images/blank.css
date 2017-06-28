@@ -1,0 +1,20 @@
+body{margin:0;padding:0;font-size:12px;font-family:"宋体","Arial";}
+body,div,span,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,table,td,tr,th,p{padding:0; margin:0;}
+li,dd,ol,ul{list-style-type:none;}
+img{border:none;}
+/********弹出窗口**********/
+.blank{width:537px; margin:0 auto; margin-top:50px;}
+.blank .blak_top{width:537px; height:24px; padding-top:17px; background:url(blak_top.jpg) no-repeat;}
+.blank .blak_top span{float:left; color:#424242; font-weight:bold; font-size:14px; padding-left:20px;}
+.blank .blak_top a{float:right; padding-right:20px;}
+.blank .blak_main{width:525px; background:url(blak_main.jpg); padding-left:6px; padding-right:6px;}
+.blank .blak_main .bm_bg{width:494px; height:26px; margin:0 auto; padding-top:15px;}
+.blank .blak_main form{width:472px; margin:0 auto; margin-top:20px; font-size:14px;}
+.blank .blak_main form .text{width:280px; height:32px; line-height:32px;  border:1px solid #E0E0E0; background:url(blak1.jpg);}
+.blank .blak_main form .bum{width:68px; height:35px; background:url(sub.jpg) no-repeat; border:none; margin-left:3px; cursor:pointer;}
+.blank .blak_main .tan{height:41px; background:url(blak2.jpg) no-repeat 132px 2px; padding-left:143px; padding-top:20px; color:#D7A566;}
+.blank .blak_main ul{width:494px; border-top:1px solid #ECECEC; margin:0 auto; font-size:14px; padding-top:15px; padding-bottom:25px;}
+.blank .blak_main ul li{margin-top:12px; background:url(ico1.jpg) no-repeat left 6px; padding-left:12px;}
+.blank .blak_main ul li a{color:#398FCC; text-decoration:none;}
+.blank .blak_main ul li a:hover{color:#F38A48; text-decoration:underline;}
+.blank .blak_botom{width:537px; height:13px; background:url(blak_bom.jpg) no-repeat;}

@@ -1,0 +1,18 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="zui">
+    		<div class="tif1">精品推荐</div>
+        	<div class="splb">
+            	<ul>
+                <!--{foreach name=best_goods from=$best_goods item=goods}-->
+                	<li>
+                    	<a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank"><img src="{$goods.thumb}" width="95" height="72" /></a>
+                    	<a href="{$goods.url}" title="{$goods.name|escape:html}" target="_blank">{$goods.short_style_name}</a><br />
+						价格：<font>{$goods.shop_price}</font><br />
+						来源：<font>[淘宝网]</font>
+                    
+                    </li>
+                <!--{/foreach}-->
+                </ul>
+        	</div>
+        	<div class="tif3"></div>
+        </div>

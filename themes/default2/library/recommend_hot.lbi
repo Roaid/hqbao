@@ -1,0 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {foreach name=hot_goods from=$hot_goods item=goods}-->
+<div class="tuwen">
+  <div class="tu_left"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="80" height="80" /></a></div>
+  <div class="tu_right"> <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name_h}</a> 价钱 {$goods.shop_price}</div>
+</div>
+<!--{/foreach}-->

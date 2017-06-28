@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="dai">
+    		<div class="tif1">热门商品分类</div>
+        	<div class="nzhuan">
+            	<div class="x"></div>
+                <!--{foreach from=$categories item=cat}-->
+            	<ul class="nz1">
+                	<span>{$cat.name|escape:html}</span>
+                    <!--{foreach from=$cat.cat_id item=child}-->
+                    <li><a href="{$child.url}">{$child.name|escape:html}</a></li>
+                    <!--{/foreach}-->
+                </ul>
+                <div style="clear:both;"></div>
+                <!--{/foreach}-->
+        	</div>
+        	<div class="tif3"></div>
+        </div>

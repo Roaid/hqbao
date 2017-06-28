@@ -1,0 +1,242 @@
+
+<script type="text/javascript" src="js/ext2/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="js/ext2/ext-all.js"></script>
+<link rel="stylesheet" type="text/css" href="js/ext2/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="js/ext2/resources/css/window.css" />
+
+<style type="text/css">
+    .x-plain-top {
+		overflow:hidden;
+		padding:1px;
+    }
+
+    .x-plain-left {
+		overflow:hidden;
+		padding:1px;
+		margin-top:10px;
+		border:#CCC solid 1px;
+    }
+    .x-plain-right {
+		overflow:hidden;
+		padding:2px;
+		margin-left:55px;
+		height:150px;
+		margin-top:20px;		
+		}
+		.button1 {
+		background: url(themes/default/images/bt1.jpg) !important; width:120px !important; height:35px !important;
+		} 
+		.button2 {
+		background: url(themes/default/images/bt2.jpg) !important;width:120px !important; height:35px !important;
+		}
+		#loading-mask{
+	position:absolute;
+	left:518px;
+	top:-227px;
+	z-index:20000;
+	background-color:white;
+	margin-top:310px;
+    }
+		
+		
+</style>
+
+<script language="javascript">
+
+function gettaobao()
+{
+
+var mask = new Ext.LoadMask(document.body, {
+     msg : '正在获取淘宝商品信息......'     });
+     mask.show();
+
+	 var tburl = Ext.get('taobaourl').dom.value;
+	 Ext.Ajax.request({
+                    url: 'taobaoget.php',
+					method:'POST',
+                    params: {
+                    actaa: 'taobao',
+                    taobaourl: tburl
+					},
+                    success: function(response,options) {
+                      	var responseArray = Ext.util.JSON.decode(response.responseText);
+						if( typeof responseArray.rsp == 'undefined' )
+						{
+							alert('提交地址非法,请重新填写.\r\n错误代码'+responseArray.error_rsp.code);
+							mask.hide();
+						}
+						else
+						{
+						//Ext.get('goods_name').dom.value=responseArray.rsp.items[0].title;						
+						var title=responseArray.rsp.items[0].title;
+						var price=responseArray.rsp.items[0].price;
+						var pic_path=responseArray.rsp.items[0].pic_path;
+						var detail_url=responseArray.rsp.items[0].detail_url;
+						
+						var tb_nick=responseArray.rsp.items[0].nick;
+						var tb_num_iid=responseArray.rsp.items[0].num_iid;
+						var tb_iid=responseArray.rsp.items[0].iid;
+						
+						var express_fee;	
+						if (responseArray.rsp.items[0].freight_payer=='seller')
+						{
+							express_fee=0;	
+						}
+						else
+						{
+							express_fee=responseArray.rsp.items[0].express_fee;
+						}
+						var _window = new Ext.Window({
+									title: "环球宝代购",
+									frame:true,    
+									height:350,    
+									width:560,    
+									layout:"form", 
+									/* 样式控制 */   
+									plain:true,    
+									/* 控制窗口大小 */   
+									resizable:false,    
+									/* 自定义Window内部 CSS 样式 */   
+									bodyStyle:"padding:15px;",
+									/* 是否可关闭 */ 
+									closable:true,
+									modal:true,
+									draggable:false,
+
+									items:[
+										   {
+											   columnWidth:1,
+											   layout:"form",
+												baseCls:"x-plain-top",
+											   defaults:{xtype:"textfield"},   
+											   labelWidth:30,
+											   items:[
+											   {fieldLabel:"商品地址",labelStyle:'font-weight:bold;height:25px;width:60px;',readOnly:true,value:detail_url,width:450},
+											   {fieldLabel:"商品名称",labelStyle:'font-weight:bold;height:25px;width:60px;',readOnly:true,value:title,width:450}
+											   ]
+										   },
+										   {
+											   baseCls:"x-plain",   
+           									   layout:"column",  
+											   items:
+											   [
+													{
+													   columnWidth:.3,
+													   layout:"form",
+													   baseCls:"x-plain-left",
+													   labelWidth:0,
+													   hideLabels:true,
+													   items:[{xtype:"textfield",width:150,height:150,inputType:"image",id:"photo",name:"photo"}]
+													},
+													{
+													   columnWidth:.65,
+													   layout:"form",
+													   baseCls:"x-plain-right",
+													   defaults:{xtype:"textfield"},   
+													   labelWidth:30,
+														items:[
+														  {fieldLabel:"价格",readOnly:true,value:price, width:150,labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {fieldLabel:"运费",readOnly:true,value:express_fee, width:150,labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {fieldLabel:"数量",value:'1', width:50,name:'shul',labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {fieldLabel:"备注", width:200,name:'beiz',labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {xtype:"hidden",name:'tb_nick',value:tb_nick},
+														  {xtype:"hidden",name:'tb_num_iid',value:tb_num_iid},
+														  {xtype:"hidden",name:'tb_iid',value:tb_iid}
+														  ]
+												   }
+											   ]
+										   }
+										  ],
+									
+									listeners:{
+										   "show":function(_window){
+										   	_window.findByType("textfield")[2].getEl().dom.src=pic_path;
+										   }
+										  },
+									buttons:[    
+											{text:"",	
+											 iconCls:"button1",
+												handler:function(){
+												var shul=_window.findByType("textfield")[5].getEl().dom.value;	
+												var beiz=_window.findByType("textfield")[6].getEl().dom.value;	
+												Ext.Ajax.request({
+													url: 'daigou.php',
+													method:'POST',
+													params: {
+													goods_name: title,
+													shop_price: price,
+													goods_img_url: pic_path,
+													express_fee: express_fee,
+													detail_url: detail_url,
+													shul: shul,
+													beiz: beiz,
+													tb_nick: tb_nick,
+													tb_num_iid: tb_num_iid,
+													tb_iid: tb_iid
+													},
+													 success: function(response,options) {
+														//var responseArraya = Ext.util.JSON.decode(response.responseText); 
+														alert('添加成功');
+														 _window.hide();
+														 location.href="flow.php";
+														 }
+												});
+												}
+											},    
+											{
+												text:"",
+												iconCls:"button2",
+												handler:function(){    
+												_window.hide();                             
+												}	
+											}    
+										] 
+								});    
+							/* 显示Window组件 */ 
+						_window.show();
+						mask.hide();
+						}
+						
+                   }
+           		}
+				);
+	 
+}
+
+</script>
+<div class="top">
+  <div class="login">{insert_scripts files='transport.js,utils.js'}{insert name='member_info'}</div>
+  <div class="zhanhu">
+  <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} -->
+            <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a>
+            <!-- {if !$smarty.foreach.nav_top_list.last} -->
+             |
+            <!-- {/if} -->
+    <!-- {/foreach} --></div>
+</div>
+<div class="search">
+
+</div>
+<div class="menu">
+  <div class="menu_left"></div>
+  <ul>
+     <li><a href="../index.php"{if $navigator_list.config.index eq 1} class="cur"{/if}>{$lang.home}</a></li>
+  	<!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+  	<li <!-- {if $smarty.foreach.nav_middle_list.last} -->style="background:none;"<!-- {/if} -->><a href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if} {if $nav.active eq 1} class="cur"{/if}>{$nav.name}</a></li>
+ <!-- {/foreach} -->
+  </ul>
+  <div class="menu_right"></div>
+</div>
+<div class="affiche"><strong>公告：</strong>{$shop_notice}</div>
+<div class="track">
+  <div class="track_left"></div>
+  <div class="track_main">
+    <div class="tb">购买商品页网站：</div>
+    <form action="" method="post">
+   
+      <input name="" type="text" class="wb" id="taobaourl" value="" onfocus="this.select();" />
+      <input name="" type="button" value=""  class="an" onClick="gettaobao();"/>
+     </form> 
+  </div>
+  <div class="track_right"></div>
+</div>

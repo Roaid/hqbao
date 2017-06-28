@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="themes/default/images/currency.css" rel="stylesheet" type="text/css" />
+<link href="themes/default/images/css.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+</head>
+<body>
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="main">
+  <div class="left">
+    <div class="left_tso"></div>
+    <div class="fls_b">
+      <div class="fls1_left">
+        <div class="flash"><!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem --></div>
+      </div>
+      <div class="fls1_right">
+        <div class="nsr" id="con_one_1"> {$shop_notice}</div>
+        <div class="yui">
+        <!--{foreach name=artciles_list2 from=$artciles_list2 item=goods}-->
+          <li><a href="{$goods.url}" target="_blank">{$goods.short_title}</a></li>
+        <!--{/foreach}-->
+        </div>
+      </div>
+    </div>
+    <div class="yijian">
+      <div class="yi_left">
+        <form action="" method="post">
+          <input name="" type="text" class="tst" id="taobaourl1" value="" onfocus="this.select();" />
+          <input name="" type="button" value=""  class="sub" onClick="gettaobao('b');"/>
+        </form>
+        <div class="xian">请将想代购的淘宝商品详细页网址粘贴到输入框中提交!</div>
+        <div class="con">
+          <h1>如何寻找商品地址？</h1>
+          “环球宝”网站帮您代购淘宝网站所有商品，到底如何寻找淘宝网址呢？让我手把手的一步一步教你，网购新手们赶快进来瞧瞧吧！<a href="article.php?id=46">详细>></a></div>
+      </div>
+      <div class="yi_right">
+        <div class="yu_biao"><a href="article_cat.php?id=15">更多></a></div>
+        <!--{foreach name=artciles_list3 from=$artciles_list3 item=goods}-->
+        <!-- {if $smarty.foreach.artciles_list3.iteration==1}-->
+        <div class="yi_mi">
+          <div class="yim_left"><img src="{$goods.file_url}" width="50" height="55" /></div>
+          <div class="yim_right"><a href="{$goods.url}" target="_blank">{$goods.short_title}</a>{$goods.description}</div>
+        </div>
+        <ul>
+        <!-- {/if} -->
+        <!-- {if $smarty.foreach.artciles_list3.iteration>1}-->
+          <li><a href="{$goods.url}" target="_blank">{$goods.short_title}</a></li>
+        <!-- {/if} -->
+        <!--{/foreach}-->
+        </ul>
+      </div>
+    </div>
+    <div class="dajia">
+      <div class="da_left">
+        <div class="yu_biao"><a href="category.php?id=85">更多></a></div>
+
+
+				<!-- TemplateBeginEditable name="左边区域1" -->
+<!-- #BeginLibraryItem "/library/recommend_best.lbi" -->
+
+
+ <!--{foreach name=best_goods from=$best_goods item=goods}-->
+        <!-- {if $smarty.foreach.best_goods.iteration>1}--> style="display:none"<!-- {/if} -->>
+          <div class="yi_mi yi_miy" id="t{$smarty.foreach.best_goods.iteration}"  <!-- {if $smarty.foreach.best_goods.iteration>1}--> style="display:none"<!-- {/if} -->>
+          <div class="yim_left"><a href="{$goods.url}" target="_blank"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>
+          <div class="yim_ri"><a href="{$goods.url}" title="{$goods.goods_style_name|escape:html}">{$goods.short_name_b}</a>
+            <div class="jiage">价钱：<b>{$goods.shop_price}</b></div>
+            
+            <div class="lai"> <span>来源：</span>
+      <div class="iu">淘宝网</div>
+      <div class="yuy">
+        <div class="yu1"></div>
+        <div class="yu2"><a href={$goods.detail_url}"" target="_blank">{$goods.tb_nick}</a></div>
+        <div class="yu3"></div>
+      </div>
+    </div>
+          </div>
+        </div>
+
+
+ <!-- {if $smarty.foreach.best_goods.iteration==1}--> style="display:none"<!-- {/if} -->>
+ 	<!--<div class="yim_left"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>-->
+    <div class="yi_mi" id="w{$smarty.foreach.best_goods.iteration}" <!-- {if $smarty.foreach.best_goods.iteration==1}--> style="display:none"<!-- {/if} -->>
+ 	<!--<div class="yim_left"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>-->
+    <div class="yim_right" onMouseMove="gund1('{$smarty.foreach.best_goods.iteration}')"><a href="{$goods.url}" title="{$goods.goods_style_name|escape:html}">{$goods.short_name_b}</a></div>
+ </div>
+<!--{/foreach}-->
+<script language="javascript">
+function gund1(a)
+{
+	var   i=0;
+	for (i=1;i<=4;i++)
+	{
+		t = document.getElementById('t'+i);
+		w = document.getElementById('w'+i);
+		if(i==a)
+		{
+			t.style.display = 'block';
+			w.style.display = 'none';
+		}
+		else
+		{
+			w.style.display = 'block';
+			t.style.display = 'none';
+		}
+	}		
+}
+</script>
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+
+      </div>
+      <div class="da_right">
+        <div class="yu_biao"><a href="tuijian.php">更多></a></div>
+        <!-- TemplateBeginEditable name="左边区域2" -->
+<!-- #BeginLibraryItem "/library/recommend_hot.lbi" -->
+
+
+ <!--{foreach name=best_goods from=$best_goods item=goods}-->
+        <!-- {if $smarty.foreach.best_goods.iteration>1}--> style="display:none"<!-- {/if} -->>
+          <div class="yi_mi yi_miy" id="t{$smarty.foreach.best_goods.iteration}"  <!-- {if $smarty.foreach.best_goods.iteration>1}--> style="display:none"<!-- {/if} -->>
+          <div class="yim_left"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>
+          <div class="yim_ri"><a href="{$goods.url}" title="{$goods.goods_style_name|escape:html}">{$goods.short_name_b}</a>
+            <div class="jiage">价钱：<b>{$goods.shop_price}</b></div>
+            
+            <div class="lai"> <span>来源：</span>
+      <div class="iu">淘宝网</div>
+      <div class="yuy">
+        <div class="yu1"></div>
+        <div class="yu2"><a href={$goods.detail_url}"" target="_blank">{$goods.tb_nick}</a></div>
+        <div class="yu3"></div>
+      </div>
+    </div>
+          </div>
+        </div>
+
+
+ <!-- {if $smarty.foreach.best_goods.iteration==1}--> style="display:none"<!-- {/if} -->>
+ 	<!--<div class="yim_left"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>-->
+    <div class="yi_mi" id="w{$smarty.foreach.best_goods.iteration}" <!-- {if $smarty.foreach.best_goods.iteration==1}--> style="display:none"<!-- {/if} -->>
+ 	<!--<div class="yim_left"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>-->
+    <div class="yim_right" onMouseMove="gund1('{$smarty.foreach.best_goods.iteration}')"><a href="{$goods.url}" title="{$goods.goods_style_name|escape:html}">{$goods.short_name_b}</a></div>
+ </div>
+<!--{/foreach}-->
+<script language="javascript">
+function gund1(a)
+{
+	var   i=0;
+	for (i=1;i<=4;i++)
+	{
+		t = document.getElementById('t'+i);
+		w = document.getElementById('w'+i);
+		if(i==a)
+		{
+			t.style.display = 'block';
+			w.style.display = 'none';
+		}
+		else
+		{
+			w.style.display = 'block';
+			t.style.display = 'none';
+		}
+	}		
+}
+</script>
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+      </div>
+    </div>
+    <div class="left_bom"></div>
+  </div>
+  <div class="right">
+    <div class="login">
+      <div class="lo_top"></div>
+<div class="lo_mi">
+        <div class="lo"><a href="user.php"><img src="images/login.jpg" /></a><a href="user.php?act=register"><img src="images/zc.jpg" /></a></div>
+        <div style="clear:both;"></div>
+        <div class="ya">快速登陆</div>
+        <div class="mt">OK,Let's go shoping!</div>
+        <a href="user.php?act=get_password" style="color:#0065B4; padding-left:7px;">» 忘记密码了？</a> </div>
+      <div class="lo_bom"></div>
+    </div>
+    <div class="yans"><a href="article.php?id=10"><img src="images/cha.jpg" /></a></div>
+    <div class="liu">
+      <div class="li_top"></div>
+      <div class="li_mi">
+        <div class="liy">折扣信息</div>
+        <!--{foreach name=artciles_list1 from=$artciles_list1 item=goods}-->
+        <!-- {if $smarty.foreach.artciles_list1.iteration==1}-->
+        <div class="sai">
+          <div class="biao"><a href="{$goods.url}" target="_blank">{$goods.short_title}</a></div>
+          <div class="nr"> <img src="{$goods.file_url}" width="50" height="55" />{$goods.description}</div>
+        </div>
+        <!-- {/if} -->
+        <!-- {if $smarty.foreach.artciles_list1.iteration>1}-->
+        <div class="sai">
+          <div class="biao"><a href="{$goods.url}">{$goods.short_title}</a></div>
+          <div class="nr">{$goods.description}</div>
+        </div>
+        <!-- {/if} -->
+        <!--{/foreach}-->
+      </div>
+      <div class="li_bom"></div>
+    </div>
+  </div>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3153785-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

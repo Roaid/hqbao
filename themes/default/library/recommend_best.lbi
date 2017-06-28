@@ -1,0 +1,46 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <!--{foreach name=best_goods from=$best_goods item=goods}-->
+        <div class="yi_mi yi_miy" id="t{$smarty.foreach.best_goods.iteration}"  <!-- {if $smarty.foreach.best_goods.iteration>1}--> style="display:none"<!-- {/if} -->>
+          <div class="yim_left"><a href="{$goods.url}" target="_blank"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>
+          <div class="yim_ri"><a href="{$goods.url}"  target="_blank" title="{$goods.goods_style_name|escape:html}">{$goods.short_name_b}</a>
+            <div class="jiage">价钱：<b>{$goods.shop_price}</b></div>
+            
+            <div class="lai"> <span>来源：</span>
+      <div class="iu">淘宝网</div>
+      <div class="yuy">
+        <div class="yu1"></div>
+        <div class="yu2"><a href={$goods.detail_url}"" target="_blank">{$goods.tb_nick}</a></div>
+        <div class="yu3"></div>
+      </div>
+    </div>
+          </div>
+        </div>
+
+
+ <div class="yi_mi" id="w{$smarty.foreach.best_goods.iteration}" <!-- {if $smarty.foreach.best_goods.iteration==1}--> style="display:none"<!-- {/if} -->>
+ 	<!--<div class="yim_left"><a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="50" height="55" border="0" class="goodsimg" /></a></div>-->
+    <div class="yim_right" onMouseMove="gund1('{$smarty.foreach.best_goods.iteration}')"><a href="{$goods.url}" title="{$goods.goods_style_name|escape:html}" target="_blank">{$goods.short_name_b}</a>{$goods.shop_price}</div>
+ </div>
+<!--{/foreach}-->
+<script language="javascript">
+function gund1(a)
+{
+	var   i=0;
+	for (i=1;i<=10;i++)
+	{
+		t = document.getElementById('t'+i);
+		w = document.getElementById('w'+i);
+		if(i==a)
+		{
+			t.style.display = 'block';
+			w.style.display = 'none';
+		}
+		else
+		{
+			w.style.display = 'block';
+			t.style.display = 'none';
+		}
+	}		
+}
+</script>

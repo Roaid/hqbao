@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<!--{foreach name=goods_list from=$goods_list item=goods}-->
+        	<div class="mo_li mo_lis">
+            	<div class="mol_zuo">
+                	<div class="tu_left"><a href="{$goods.url}"><img src="{$goods.goods_thumb}" alt="{$goods.goods_name}" width="80" height="80" /></a></div>
+                <div class="tu_right">
+                	<a href="{$goods.url}"> <!-- {if $goods.goods_style_name} -->{$goods.goods_style_name}<!-- {else} -->        {$goods.goods_name}<!-- {/if} --></a><br />
+                    价钱：<font>{$goods.shop_price}</font>
+                </div>
+                </div>
+                <div class="mol_you">
+            <a href="javascript:addToCart({$goods.goods_id})" style=" width:140px"></a>
+                </div>
+            </div>
+ <!--{/foreach}-->
+
+

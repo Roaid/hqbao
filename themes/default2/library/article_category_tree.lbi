@@ -1,0 +1,12 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="yo2">
+			<!-- {foreach from=$article_categories item=help_cat} -->
+        	<ul class="yu1">
+            	<li style="border-bottom:none; padding-left:30px; color:#000; font-size:14px; padding-top:2px;">{$help_cat.cat_name}</li>
+                 <!-- {foreach from=$help_cat.article item=item} -->
+            	<li><a href="{$item.url}" title="{$item.title|escape:html}">{$item.short_title}</a></li>
+                <!--{/foreach}-->
+            </ul>
+            <!--{/foreach}-->
+
+</div>

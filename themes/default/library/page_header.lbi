@@ -1,0 +1,326 @@
+﻿
+<script type="text/javascript" src="js/ext2/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="js/ext2/ext-all.js"></script>
+<link rel="stylesheet" type="text/css" href="js/ext2/resources/css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="js/ext2/resources/css/window.css" />
+
+<style type="text/css">
+    .x-plain-top {
+		overflow:hidden;
+		padding:1px;
+    }
+
+    .x-plain-left {
+		overflow:hidden;
+		padding:1px;
+		margin-top:10px;
+		border:#CCC solid 1px;
+    }
+    .x-plain-right {
+		overflow:hidden;
+		padding:2px;
+		margin-left:55px;
+		height:150px;
+		margin-top:20px;		
+		}
+		.button1 {
+		background: url(themes/default/images/bt1.jpg) !important; width:120px !important; height:35px !important;
+		} 
+		.button2 {
+		background: url(themes/default/images/bt2.jpg) !important;width:120px !important; height:35px !important;
+		}
+		#loading-mask{
+	position:absolute;
+	left:518px;
+	top:-227px;
+	z-index:20000;
+	background-color:white;
+	margin-top:310px;
+    }
+		
+		
+</style>
+<script language="javascript">
+function setTab(name,cursel,n)
+{
+  for(i=1;i<=n;i++){
+   var menu=document.getElementById(name+i);
+   var con=document.getElementById("con_"+name+"_"+i);
+   if(i==cursel)
+   {
+	   if(i<6){
+		if(menu.className=='hover'){
+			menu.className="nohover";	
+		}
+		else
+		{
+			menu.className="hover";
+		}
+	   }
+		if(con.style.display=='block'){
+			con.style.display="none";	
+		}
+		else
+		{
+			con.style.display="block";
+		}
+		
+   }
+   else
+   {
+	   if(i<6){
+	 	 menu.className='nohover';
+	   }
+		 con.style.display="none";
+   }
+  }
+}
+</script>
+<script language="javascript">
+function setTab1(name,cursel,n)
+{
+  for(i=1;i<=n;i++){
+   var menu=document.getElementById(name+i);
+   var con=document.getElementById("con_"+name+"_"+i);
+   menu.className=i==cursel?"hover1":"";
+   con.style.display=i==cursel?"block":"none";   
+  }
+}
+
+
+function gettaobao(but)
+{
+
+var mask = new Ext.LoadMask(document.body, {
+     msg : '正在获取淘宝商品信息......'     });
+     mask.show();
+	 var tburl;
+
+	 if(but=="b"){
+		 tburl = Ext.get('taobaourl1').dom.value;		 
+	 }
+	 else
+	 {
+		 tburl = Ext.get('taobaourl').dom.value;
+	 }
+	 Ext.Ajax.request({
+                    url: 'taobaoget.php',
+					method:'POST',
+                    params: {
+                    actaa: 'taobao',
+                    taobaourl: tburl
+					},
+                    success: function(response,options) {
+                      	var responseArray = Ext.util.JSON.decode(response.responseText);
+						if( typeof responseArray.item_get_response == 'undefined' )
+						{
+							alert('提交地址非法,请重新填写.\r\n错误代码'+responseArray.error_rsp.code);
+							mask.hide();
+						}
+						else
+						{
+						//Ext.get('goods_name').dom.value=responseArray.rsp.items[0].title;						
+						var title=responseArray.item_get_response.item.title;
+						var price=responseArray.item_get_response.item.price;
+						var pic_path=responseArray.item_get_response.item.pic_path;
+						var detail_url=responseArray.item_get_response.item.detail_url;
+						
+						var tb_nick=responseArray.item_get_response.item.nick;
+						var tb_num_iid=responseArray.item_get_response.item.num_iid;
+						var tb_iid=responseArray.item_get_response.item.iid;
+						
+						var express_fee;	
+						if (responseArray.item_get_response.item.freight_payer=='seller')
+						{
+							express_fee=0;	
+						}
+						else
+						{
+							express_fee=responseArray.item_get_response.item.express_fee;
+						}
+						var _window = new Ext.Window({
+									title: "环球宝代购",
+									frame:true,    
+									height:350,    
+									width:560,    
+									layout:"form", 
+									/* 样式控制 */   
+									plain:true,    
+									/* 控制窗口大小 */   
+									resizable:false,    
+									/* 自定义Window内部 CSS 样式 */   
+									bodyStyle:"padding:15px;",
+									/* 是否可关闭 */ 
+									closable:true,
+									modal:true,
+									draggable:false,
+
+									items:[
+										   {
+											   columnWidth:1,
+											   layout:"form",
+												baseCls:"x-plain-top",
+											   defaults:{xtype:"textfield"},   
+											   labelWidth:30,
+											   items:[
+											   {fieldLabel:"商品地址",labelStyle:'font-weight:bold;height:25px;width:60px;',readOnly:true,value:detail_url,width:450},
+											   {fieldLabel:"商品名称",labelStyle:'font-weight:bold;height:25px;width:60px;',readOnly:true,value:title,width:450}
+											   ]
+										   },
+										   {
+											   baseCls:"x-plain",   
+           									   layout:"column",  
+											   items:
+											   [
+													{
+													   columnWidth:.3,
+													   layout:"form",
+													   baseCls:"x-plain-left",
+													   labelWidth:0,
+													   hideLabels:true,
+													   items:[{xtype:"textfield",width:150,height:150,inputType:"image",id:"photo",name:"photo"}]
+													},
+													{
+													   columnWidth:.65,
+													   layout:"form",
+													   baseCls:"x-plain-right",
+													   defaults:{xtype:"textfield"},   
+													   labelWidth:30,
+														items:[
+														  {fieldLabel:"价格",readOnly:true,value:price, width:150,labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {fieldLabel:"运费",readOnly:true,value:express_fee, width:150,labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {fieldLabel:"数量",value:'1', width:50,name:'shul',labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {fieldLabel:"备注", width:200,name:'beiz',labelStyle:'font-weight:bold;height:25px;width:35px;'},
+														  {xtype:"hidden",name:'tb_nick',value:tb_nick},
+														  {xtype:"hidden",name:'tb_num_iid',value:tb_num_iid},
+														  {xtype:"hidden",name:'tb_iid',value:tb_iid}
+														  ]
+												   }
+											   ]
+										   }
+										  ],
+									
+									listeners:{
+										   "show":function(_window){
+										   	_window.findByType("textfield")[2].getEl().dom.src=pic_path;
+										   }
+										  },
+									buttons:[    
+											{text:"",	
+											 iconCls:"button1",
+												handler:function(){
+												var shul=_window.findByType("textfield")[5].getEl().dom.value;	
+												var beiz=_window.findByType("textfield")[6].getEl().dom.value;	
+												Ext.Ajax.request({
+													url: 'daigou.php',
+													method:'POST',
+													params: {
+													goods_name: title,
+													shop_price: price,
+													goods_img_url: pic_path,
+													express_fee: express_fee,
+													detail_url: detail_url,
+													shul: shul,
+													beiz: beiz,
+													tb_nick: tb_nick,
+													tb_num_iid: tb_num_iid,
+													tb_iid: tb_iid
+													},
+													 success: function(response,options) {
+														//var responseArraya = Ext.util.JSON.decode(response.responseText); 
+														alert('添加成功');
+														 _window.hide();
+														 location.href="flow.php";
+														 }
+												});
+												}
+											},    
+											{
+												text:"",
+												iconCls:"button2",
+												handler:function(){    
+												_window.hide();                             
+												}	
+											}    
+										] 
+								});    
+							/* 显示Window组件 */ 
+						_window.show();
+						mask.hide();
+						}
+						
+                   }
+           		}
+				);
+	 
+}
+
+</script>
+
+<div class="top">
+	<div class="youke">{insert_scripts files='transport.js,utils.js'}{insert name='member_info'}</div>
+    <ul>
+    	<!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} -->
+            <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a>
+            <!-- {if !$smarty.foreach.nav_top_list.last} -->
+             |
+            <!-- {/if} -->
+    <!-- {/foreach} -->
+    </ul>
+</div>
+<div class="me">
+	<div class="menu">
+    	<ul>
+        	 <li><a href="index.php"{if $navigator_list.config.index eq 1} class="cur"{/if}>{$lang.home}</a></li>
+            <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+  	<li <!-- {if $smarty.foreach.nav_middle_list.last} -->style="background:none;"<!-- {/if} -->><a href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if} {if $nav.active eq 1} class="cur"{/if}>{$nav.name}</a></li>
+    
+ <!-- {/foreach} -->
+ <li onclick="setTab('two',6,6)"><a href="#" style="color:#FFAE00">快速代购</a></li>
+        </ul>
+        <div class="danqin">您的位置：{$ur_here}</div>
+    </div>
+    <div class="qq">
+    	<ul>
+           <li id="two1" onclick="setTab('two',1,6)" class="nohover"><img src="images/msn.gif" width="17" height="17" /><span>MSN</span></li> 
+           <li id="two2" onclick="setTab('two',2,6)" class="nohover"><img src="images/qq.gif" width="17" height="17" /><span>Q Q</span></li> 
+           <li id="two3" onclick="setTab('two',3,6)" class="nohover"><img src="images/tel.gif" width="17" height="17" /><span>电话</span></li> 
+           <li id="two4" onclick="setTab('two',4,6)" class="nohover"><img src="images/swt.gif" width="17" height="17" /><span>商务通</span></li> 
+           <li id="two5" onclick="setTab('two',5,6)" class="nohover"><img src="images/skype.gif" width="17" height="17" /><span>skype</span></li> 
+        </ul>
+      	 <div class="dib" id="con_two_1" style="display:none">
+        	<div class="le"><img src="images/msn.gif" /></div>
+            <div class="ri"><b>MSN：</b>kf@hqbao.com  service@hqbao.com<span>服务时间：周一至周六 8:30-18:00</span></div>
+        </div> 
+        <div class="dib" id="con_two_2" style="display:none">
+        	<div class="le"><img src="images/QQ.gif" /></div>
+            <div class="ri"><b>Q Q：</b>934796661<span>服务时间：周一至周六 8:30-18:00</span></div>
+        </div>
+        <div class="dib" id="con_two_3" style="display:none">
+        	<div class="le"><img src="images/dh.gif" /></div>
+            <div class="ri"><b>电话：</b>+1(661)-878-7689<span>服务时间：周一至周六 8:30-18:00</span></div>
+        </div>
+        <div class="dib" id="con_two_4" style="display:none">
+        	<div class="le"><img src="images/swt.gif" /></div>
+            <div class="ri"><b><script language="javascript">
+if(document.all || document.getElementById)
+{
+	document.write('<span id="LR_User_TextLink0"></span>');
+}
+else if(document.layers)
+{
+	document.write('<layer name="LR_User_TextLink0"></layer>');
+}
+</script></b><span>服务时间：周一至周六 8:30-18:00</span></div>
+        </div>
+        <div class="dib" id="con_two_5" style="display:none">
+        	<div class="le"><img src="images/skype.gif" /></div>
+            <div class="ri"><script type="text/javascript" src="http://skype.tom.com/script/skypeCheck40.js"></script>
+<a href="skype:hqbao-service?call" onclick="return skypeCheck();"><img src="http://mystatus.skype.com/smallclassic/hqbao-service" style="border: none;" width="114" height="20" alt="My status" /></a><span>服务时间：周一至周六 8:30-18:00</span></div>
+        </div>
+        <div class="dib" id="con_two_6" style="display:none">
+                <div class="le"></div>
+            <input name="" type="text" value="!输入淘宝商品地址并提交!" class="tst" id="taobaourl" onfocus="this.select();" /><input name="" type="button" value="" class="sub"  onClick="gettaobao('a');"/>
+        </div>
+    </div>
+</div>

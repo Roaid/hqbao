@@ -1,0 +1,19 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <!--{foreach name=best_goods from=$best_goods item=goods}-->
+ <!-- {if $smarty.foreach.best_goods.iteration==1}-->
+<div class="tuwen">
+            	<div class="tu_left"> <a href="{$goods.url}"><img src="{$goods.thumb}" alt="{$goods.name|escape:html}" width="80" height="80" border="0" class="goodsimg" /></a></div>
+                <div class="tu_right">
+                	<a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_style_name}</a><br />
+                    价钱：<font>{$goods.shop_price}</font> 
+                </div>
+</div>
+<!-- {/if} -->
+<!-- {if $smarty.foreach.best_goods.iteration==2}-->
+<ul class="buy3">
+<!-- {/if} -->
+<!-- {if $smarty.foreach.best_goods.iteration>1}-->
+            	<li><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.short_name_b}</a><span>{$goods.shop_price}</span></li>
+<!-- {/if} -->
+<!--{/foreach}-->
+</ul>

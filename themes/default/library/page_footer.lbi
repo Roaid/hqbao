@@ -1,0 +1,48 @@
+﻿<div style="clear:both;"></div>
+<div class="fanhui"><img src="images/fan.jpg" /><a href="#">返回顶部</a></div>
+<div style="clear:both;"></div>
+<!--{if $helps}-->
+<div class="dmenu">
+	<div class="men_cont">
+    <!-- {foreach from=$helps item=help_cat} -->
+    	<ul>
+        	<span>{$help_cat.cat_name}</span>
+            <!-- {foreach from=$help_cat.article item=item} -->
+            <li><a href="{$item.url}" title="{$item.title|escape:html}">{$item.short_title}</a></li>
+            <!-- {/foreach} -->
+        </ul>
+      <!-- {/foreach} -->
+    </div>
+</div>
+<div style="clear:both;"></div>
+<!--{/if}-->
+<div class="bottom">
+<!-- {if $navigator_list.bottom} -->
+ <!-- {foreach name=nav_bottom_list from=$navigator_list.bottom item=nav} -->
+<a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+ <!-- {if !$smarty.foreach.nav_bottom_list.last} -->
+           |
+        <!-- {/if} -->
+      <!-- {/foreach} -->
+<!-- {/if} -->
+    <br />客服{$service_phone}  E-mail: {$service_email}  <!-- ICP 证书{if $icp_number} -->
+  {$lang.icp_number}:<a href="http://www.miibeian.gov.cn/" target="_blank">{$icp_number}</a>
+  <!-- 结束ICP 证书{/if} -->
+</div>
+
+<script type="text/javascript">
+  //<![CDATA[
+  var process_request = "{$lang.process_request}";
+  //]]>
+  </script> 
+<script language="javascript" src="http://lvt.zoosnet.net/JS/LsJS.aspx?siteid=LVT40061807"></script>
+<script language="javascript">
+if(typeof(LiveReceptionCode_isonline)!='undefined'  && LR_GetObj('LR_User_TextLink0')!=null)
+{
+	if(LiveReceptionCode_isonline)
+		LR_GetObj('LR_User_TextLink0').innerHTML='<a '+LiveReceptionCode_BuildChatWin('对话','客服人员在线,欢迎点击咨询')+'>代购中遇到什么问题请点击进行咨询</a>';
+	else
+		LR_GetObj('LR_User_TextLink0').innerHTML='<a '+LiveReceptionCode_BuildChatWin('对话','客服人员不在线,请点击留言')+'>代购中遇到什么问题请点击给我们留言</a>';
+}
+</script>
+<script type="text/javascript" src="http://js.tongji.linezing.com/2037309/tongji.js"></script><noscript><a href="http://www.linezing.com"><img src="http://img.tongji.linezing.com/2037309/tongji.gif"/></a></noscript>
